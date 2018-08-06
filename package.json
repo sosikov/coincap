@@ -1,0 +1,10 @@
+{
+  "name": "coincap",
+  "homepage": "https://github.com/sosikov/coincap#readme",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
