@@ -1,11 +1,16 @@
 angular
 	.module('coincapApp')
-	.factory('ApiService', function () {
-		function test () {
-			console.log('test');
+	.factory('ApiService', function ($http) {
+		function getCoins () {
+			return $http.get('http://coincap.io/coins/');
+		}
+
+		function getCurrentCoin (params) {
+			return $http.get('http://coincap.io/page/' + params);
 		}
 
 		return {
-			test : test
+			getCoins       : getCoins,
+			getCurrentCoin : getCurrentCoin
 		};
 	});
