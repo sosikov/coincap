@@ -17,6 +17,7 @@ angular
 				})
 				.catch(function (error) {
 					console.error('error', error);
+					$scope.loader = false;
 				});
 		}
 
@@ -31,6 +32,7 @@ angular
 				})
 				.catch(function (error) {
 					console.error('error', error);
+					$scope.loader = false;
 				});
 		}
 
