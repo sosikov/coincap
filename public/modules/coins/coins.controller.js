@@ -1,29 +1,33 @@
 angular
 	.module('coincapApp')
+	.filter('typeof', function () {
+		return function (obj) {
+			return typeof obj;
+		};
+	})
 	.controller('CoinsController', function ($scope, ApiService) {
 		function activate () {
-			console.log('CoinsController is work!');
-
 			ApiService
-				.getCoins()
+				.getAllCoins()
 				.then(function (response) {
-					console.log('response', response);
-				})
-				.catch(function (error) {
-					console.error('error', error);
-				});
-
-			var params = 'ETC'; // test API with params
-
-			ApiService
-				.getCurrentCoin(params)
-				.then(function (response) {
-					console.log('response', response);
+					$scope.coins = response.data;
 				})
 				.catch(function (error) {
 					console.error('error', error);
 				});
 		}
 
+		function selectCoin (coin) {
+			ApiService
+				.getCurrentCoin(coin)
+				.then(function (response) {
+					$scope.currentCoin = response.data;
+				})
+				.catch(function (error) {
+					console.error('error', error);
+				});
+		}
+
+		$scope.selectCoin = selectCoin;
 		activate();
 	});

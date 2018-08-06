@@ -1,6 +1,6 @@
 angular
 	.module('coincapApp', [ 'ui.router' ])
-	.config(function ($stateProvider) {
+	.config(function ($stateProvider, $urlRouterProvider) {
 		var coinsState = {
 			name        : 'coins',
 			url         : '/coins',
@@ -17,4 +17,6 @@ angular
 
 		$stateProvider.state(coinsState);
 		$stateProvider.state(blankState);
+
+		$urlRouterProvider.otherwise('/coins');
 	});

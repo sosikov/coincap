@@ -1,3 +1,16 @@
 .nav-link {
     color: #fff;
 }
+
+.container {
+    margin-top: 40px;
+}
+
+.dropdown {
+    margin-bottom: 40px;
+}
+
+.dropdown-menu.show {
+    height: 200px !important;
+    overflow: auto;
+}

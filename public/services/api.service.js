@@ -1,7 +1,7 @@
 angular
 	.module('coincapApp')
 	.factory('ApiService', function ($http) {
-		function getCoins () {
+		function getAllCoins () {
 			return $http.get('http://coincap.io/coins/');
 		}
 
@@ -10,7 +10,7 @@ angular
 		}
 
 		return {
-			getCoins       : getCoins,
+			getAllCoins    : getAllCoins,
 			getCurrentCoin : getCurrentCoin
 		};
 	});
