@@ -5,37 +5,42 @@ angular
 			return typeof obj;
 		};
 	})
-	.controller('CoinsController', function ($scope, ApiService) {
+	.controller('CoinsController', function (ApiService) {
+		var vm = this;
+
 		function activate () {
-			$scope.loader = true;
+			vm.loader = true;
 
 			ApiService
 				.getAllCoins()
 				.then(function (response) {
-					$scope.coins = response.data;
-					$scope.loader = false;
+					vm.coins = response.data;
+					vm.loader = false;
 				})
 				.catch(function (error) {
 					console.error('error', error);
-					$scope.loader = false;
+					vm.loader = false;
 				});
 		}
 
 		function selectCoin (coin) {
-			$scope.loader = true;
+			if (!coin) {
+				return;
+			}
+			vm.loader = true;
 
 			ApiService
 				.getCurrentCoin(coin)
 				.then(function (response) {
-					$scope.currentCoin = response.data;
-					$scope.loader = false;
+					vm.currentCoin = response.data;
+					vm.loader = false;
 				})
 				.catch(function (error) {
 					console.error('error', error);
-					$scope.loader = false;
+					vm.loader = false;
 				});
 		}
 
-		$scope.selectCoin = selectCoin;
+		vm.selectCoin = selectCoin;
 		activate();
 	});

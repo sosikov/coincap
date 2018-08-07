@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="dropdown" ng-show="coins">
+    <div class="dropdown" ng-show="coinsCtrl.coins">
         <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
@@ -12,21 +12,21 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a
                 class="dropdown-item"
-                ng-repeat="coin in coins track by $index"
-                ng-click="selectCoin(coin)">
+                ng-repeat="coin in coinsCtrl.coins track by $index"
+                ng-click="coinsCtrl.selectCoin(coin)">
                 {{coin}}
             </a>
         </div>
     </div>
-    <table class="table table-bordered" ng-show="currentCoin">
+    <table class="table table-bordered" ng-show="coinsCtrl.currentCoin">
         <tbody>
-            <tr ng-repeat="(key, value) in currentCoin track by $index" ng-if="key !== 'id'">
+            <tr ng-repeat="(key, value) in coinsCtrl.currentCoin track by $index" ng-if="key !== 'id'">
                 <th>{{key}}</th>
                 <td>{{(value | typeof) === 'number' ? (value | number : 3) : (value)}}</td>
             </tr>
         </tbody>
     </table>
 </div>
-<div class="preloader" ng-if="loader">
+<div class="preloader" ng-if="coinsCtrl.loader">
     <div class="loader"></div>
 </div>
